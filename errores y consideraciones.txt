@@ -1,0 +1,25 @@
+error: cuando da error del ks de build.gradle module: app segun el orden de la guia del ing, debes borrar la linea ksp, sincronizar y pegar de nuevo
+
+error: Could not determine the dependencies of task ':app:compileDebugJavaWithJavac'.
+> Could not create task ':app:kspDebugKotlin'.
+   > Cannot query the value of task ':app:compileDebugKotlin' property 'moduleName' because it has no value available.
+
+* Try:
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+
+una de las soluciones puede ser en local.properties poner esto: sdk.dir=C\:\\Users\\yossemar\\AppData\\Local\\Android\\Sdk
+
+otra puede ser actualizar las versiones des desde el sistente y verificar o actualizar la version de java
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = "11"
+    }
+la solucion era la version de la dependencia:
+id("com.google.devtools.ksp") version "1.9.22-1.0.17" apply false
+estaba usando la 1.8 
+revisar la compativilidad de las versiones
+aclarar que la version de java esta en 11 y que todo esta actualizado a travez del asistente
